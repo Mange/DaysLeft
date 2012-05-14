@@ -8,12 +8,20 @@ import android.test.AndroidTestCase;
 
 public class WidgetConfigurationTest extends AndroidTestCase {
 	WidgetConfiguration config;
-	final int widgetId = 1;
+	final int widgetId = 1, otherWidgetId = 2;
 
 	protected void setUp() throws Exception {
 		super.setUp();
 		resetStoredPreferences();
-		config = new WidgetConfiguration(getContext(), widgetId);
+		config = openConfig();
+	}
+
+	protected WidgetConfiguration openConfig() {
+		return openConfig(widgetId);
+	}
+
+	protected WidgetConfiguration openConfig(int widgetId) {
+		return new WidgetConfiguration(getContext(), widgetId);
 	}
 
 	private void resetStoredPreferences() {
@@ -25,15 +33,21 @@ public class WidgetConfigurationTest extends AndroidTestCase {
 
 	public void testSavingTitle() {
 		String newTitle = "The new title";
-		assertNotSame(newTitle, config.getTitle());
+		assertFalse(newTitle.equals(config.getTitle()));
 		config.setTitle(newTitle);
-		assertSame(newTitle, config.getTitle());
+		assertEquals(newTitle, config.getTitle());
+		assertEquals(newTitle, openConfig().getTitle());
+		
+		assertFalse(newTitle.equals(openConfig(otherWidgetId).getTitle()));
 	}
-	
+
 	public void testSavingSimpleDate() {
 		SimpleDate date = new SimpleDate(2000, 1, 2);
 		assertNull("Should have no date by default", config.getSimpleDate());
 		config.setSimpleDate(date);
-		assertEquals(date.toString(), config.getSimpleDate().toString());
+		assertEquals(date, config.getSimpleDate());
+		assertEquals(date, openConfig().getSimpleDate());
+		
+		assertFalse(date.equals(openConfig(otherWidgetId).getSimpleDate()));
 	}
 }
