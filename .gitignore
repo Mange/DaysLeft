@@ -1,0 +1,14 @@
+# Metadata, Eclipse stuff, etc.
+.metadata
+.settings
+.project
+.classpath
+
+# Compiled, generated
+*.class
+
+DaysLeftTest/bin
+DaysLeftTest/gen
+
+DaysLeft/bin
+DaysLeft/gen
