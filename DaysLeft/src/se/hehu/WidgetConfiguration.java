@@ -9,7 +9,7 @@ public class WidgetConfiguration {
 	private Context context;
 	private int widgetId;
 	
-	private static final String PREF_NAME = "se.hehu.DaysLeft";
+	public static final String PREF_NAME = "se.hehu.DaysLeft";
 	private static final String PREF_PREFIX = "widget_";
 	
 	public WidgetConfiguration(Context context, int widgetId) {
