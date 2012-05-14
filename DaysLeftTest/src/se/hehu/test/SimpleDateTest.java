@@ -23,6 +23,21 @@ public class SimpleDateTest extends AndroidTestCase {
 		assertEquals(5, date.getDay());
 	}
 	
+	public void testComparingDates() {
+		SimpleDate a, b, c;
+		a = new SimpleDate(2000, 1, 1);
+		b = new SimpleDate(2001, 2, 3);
+		c = new SimpleDate(2001, 2, 3);
+		
+		assertEquals(a, a);
+		assertEquals(b, c);
+		
+		assertFalse(a.equals(b));
+		assertFalse(c.equals(a));
+		assertFalse(a.equals("2000-01-01"));
+		assertFalse(a.equals(null));
+	}
+	
 	public void testToString() {
 		SimpleDate date = new SimpleDate(2000, 1, 2);
 		assertEquals("2000-01-02", date.toString());

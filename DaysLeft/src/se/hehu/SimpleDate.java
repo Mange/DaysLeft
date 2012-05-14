@@ -55,6 +55,27 @@ public class SimpleDate {
 		}
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + day;
+		result = prime * result + month;
+		result = prime * result + year;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null || getClass() != obj.getClass())
+			return false;
+		
+		SimpleDate other = (SimpleDate) obj;
+		return (day == other.day && month == other.month && year == other.year);
+	}
+
 	public String toString() {
 		return String.format("%d-%02d-%02d", year, month, day);
 	}
