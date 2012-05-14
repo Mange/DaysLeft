@@ -1,7 +1,5 @@
 package se.hehu;
 
-import java.util.Date;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -21,9 +19,16 @@ public class WidgetConfiguration {
 		return getPrefs().getString(getFullKeyName("title"), "No title");
 	}
 	
-	public Date getDate() {
-		// TODO: Implement
-		return new Date();
+	public SimpleDate getSimpleDate() {
+		int year, month, day;
+		SharedPreferences prefs = getPrefs();
+		year = prefs.getInt(getFullKeyName("date_year"), 0);
+		month = prefs.getInt(getFullKeyName("date_month"), 0);
+		day = prefs.getInt(getFullKeyName("date_day"), 0);
+		if (year == 0 || month == 0 || day == 0)
+			return null;
+		else
+			return new SimpleDate(year, month, day);		
 	}
 	
 	public void setTitle(String title) {
@@ -32,8 +37,12 @@ public class WidgetConfiguration {
 		editor.commit();
 	}
 	
-	public void setDate(Date date) {
-		// TODO: Implement
+	public void setSimpleDate(SimpleDate date) {
+		SharedPreferences.Editor editor = getPrefsEditor();
+		editor.putInt(getFullKeyName("date_year"), date.getYear());
+		editor.putInt(getFullKeyName("date_month"), date.getMonth());
+		editor.putInt(getFullKeyName("date_day"), date.getDay());
+		editor.commit();		
 	}
 	
 	private SharedPreferences getPrefs() {

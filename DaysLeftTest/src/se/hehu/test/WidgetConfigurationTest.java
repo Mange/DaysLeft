@@ -1,5 +1,6 @@
 package se.hehu.test;
 
+import se.hehu.SimpleDate;
 import se.hehu.WidgetConfiguration;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -27,5 +28,12 @@ public class WidgetConfigurationTest extends AndroidTestCase {
 		assertNotSame(newTitle, config.getTitle());
 		config.setTitle(newTitle);
 		assertSame(newTitle, config.getTitle());
+	}
+	
+	public void testSavingSimpleDate() {
+		SimpleDate date = new SimpleDate(2000, 1, 2);
+		assertNull("Should have no date by default", config.getSimpleDate());
+		config.setSimpleDate(date);
+		assertEquals(date.toString(), config.getSimpleDate().toString());
 	}
 }

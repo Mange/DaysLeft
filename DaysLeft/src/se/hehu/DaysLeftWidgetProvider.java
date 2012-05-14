@@ -18,7 +18,6 @@ public class DaysLeftWidgetProvider extends AppWidgetProvider {
 		WidgetConfiguration config = getConfig(context, appWidgetId);
 		
 		views.setTextViewText(R.id.eventTitle, config.getTitle());
-		views.setTextViewText(R.id.eventDate, config.getDate().toLocaleString());
 		
 		appWidgetManager.updateAppWidget(appWidgetId, views);
 	}
