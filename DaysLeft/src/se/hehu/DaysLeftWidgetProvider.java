@@ -17,6 +17,14 @@ public class DaysLeftWidgetProvider extends AppWidgetProvider {
 		RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
 		WidgetConfiguration config = getConfig(context, appWidgetId);
 		
+		SimpleDate eventDate = config.getSimpleDate();
+		if (eventDate != null) {
+			views.setTextViewText(R.id.eventDate, eventDate.toString());
+			views.setTextViewText(R.id.daysLeft, Integer.toString(eventDate.getDaysLeft()));
+		} else {
+			views.setTextViewText(R.id.eventDate, "");
+			views.setTextViewText(R.id.daysLeft, "");			
+		}
 		views.setTextViewText(R.id.eventTitle, config.getTitle());
 		
 		appWidgetManager.updateAppWidget(appWidgetId, views);
