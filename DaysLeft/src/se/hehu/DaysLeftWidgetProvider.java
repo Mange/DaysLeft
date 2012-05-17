@@ -13,7 +13,7 @@ public class DaysLeftWidgetProvider extends AppWidgetProvider {
 		}
 	}
 	
-	private void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
+	public static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
 		RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
 		WidgetConfiguration config = getConfig(context, appWidgetId);
 		
@@ -30,7 +30,7 @@ public class DaysLeftWidgetProvider extends AppWidgetProvider {
 		appWidgetManager.updateAppWidget(appWidgetId, views);
 	}
 	
-	private WidgetConfiguration getConfig(Context context, int widgetId) {
+	private static WidgetConfiguration getConfig(Context context, int widgetId) {
 		return new WidgetConfiguration(context, widgetId);
 	}
 }
