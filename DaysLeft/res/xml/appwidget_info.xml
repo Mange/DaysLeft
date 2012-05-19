@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<appwidget-provider
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:minWidth="110dp"
-    android:updatePeriodMillis="3600000"
-    android:minHeight="110dp"
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:configure="se.hehu.ConfigureActivity"
     android:initialLayout="@layout/widget"
-    android:configure="se.hehu.ConfigureActivity">
+    android:minHeight="40dp"
+    android:minWidth="40dp"
+    android:updatePeriodMillis="3600000" >
+
 </appwidget-provider>
