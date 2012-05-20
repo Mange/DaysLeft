@@ -60,7 +60,7 @@ public class ConfigureActivity extends Activity {
 
         titleEdit.setText(config.getTitle());
         if (date != null) {
-            datePicker.updateDate(date.getYear(), date.getMonth(),
+            datePicker.updateDate(date.getYear(), date.getMonth() - 1,
                     date.getDay());
         }
     }
