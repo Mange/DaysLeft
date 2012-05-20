@@ -3,6 +3,7 @@
 
     <style name="base" parent="@android:style/TextAppearance.Medium">
         <item name="android:gravity">center</item>
+        <item name="android:maxLines">1</item>
         <!--
         Standard textSize for TextAppearance.Medium in Android 2.3
         <item name="android:textSize">18sp</item>
@@ -10,7 +11,7 @@
     </style>
 
     <style name="eventTitle" parent="base">
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">11sp</item>
     </style>
 
     <style name="eventDate" parent="base">
