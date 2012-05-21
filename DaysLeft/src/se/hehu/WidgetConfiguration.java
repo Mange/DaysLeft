@@ -54,6 +54,11 @@ public class WidgetConfiguration {
         editor.commit();
     }
 
+    public void clear() {
+        setTitle(null);
+        setSimpleDate(null);
+    }
+
     protected SharedPreferences getPrefs() {
         return context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
     }

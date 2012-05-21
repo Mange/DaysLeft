@@ -70,4 +70,27 @@ public class WidgetConfigurationTest extends AndroidTestCase {
 
         assertFalse(date.equals(openConfig(otherWidgetId).getSimpleDate()));
     }
+
+    public void testClearingConfig() {
+        SimpleDate date = new SimpleDate(2000, 1, 2);
+        String title = "Some title";
+
+        ScopedWidgetConfiguration other = openConfig(otherWidgetId);
+
+        config.setTitle(title);
+        config.setSimpleDate(date);
+        other.setTitle(title);
+        other.setSimpleDate(date);
+
+        other.clear();
+
+        assertFalse("Title got cleared", title.equals(other.getTitle()));
+        assertFalse("Date got cleared", date.equals(other.getSimpleDate()));
+
+        assertEquals("Title of other config was not changed", title,
+                config.getTitle());
+        assertEquals("Date of other config was not changed", date,
+                config.getSimpleDate());
+
+    }
 }
