@@ -39,9 +39,18 @@ public class WidgetConfiguration {
 
     public void setSimpleDate(SimpleDate date) {
         SharedPreferences.Editor editor = getPrefsEditor();
-        editor.putInt(getFullKeyName("date_year"), date.getYear());
-        editor.putInt(getFullKeyName("date_month"), date.getMonth());
-        editor.putInt(getFullKeyName("date_day"), date.getDay());
+        int year = 0, month = 0, day = 0;
+
+        if (date != null) {
+            year = date.getYear();
+            month = date.getMonth();
+            day = date.getDay();
+        }
+
+        editor.putInt(getFullKeyName("date_year"), year);
+        editor.putInt(getFullKeyName("date_month"), month);
+        editor.putInt(getFullKeyName("date_day"), day);
+
         editor.commit();
     }
 
