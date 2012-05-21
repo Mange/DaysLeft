@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class WidgetConfiguration {
-    private Context context;
-    private int widgetId;
+    protected Context context;
+    protected int widgetId;
 
     public static final String PREF_NAME = "se.hehu.DaysLeft";
     private static final String PREF_PREFIX = "widget_";
@@ -45,15 +45,15 @@ public class WidgetConfiguration {
         editor.commit();
     }
 
-    private SharedPreferences getPrefs() {
+    protected SharedPreferences getPrefs() {
         return context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
     }
 
-    private String getFullKeyName(String keyName) {
+    protected String getFullKeyName(String keyName) {
         return PREF_PREFIX + widgetId + "_" + keyName;
     }
 
-    private SharedPreferences.Editor getPrefsEditor() {
+    protected SharedPreferences.Editor getPrefsEditor() {
         return getPrefs().edit();
     }
 }

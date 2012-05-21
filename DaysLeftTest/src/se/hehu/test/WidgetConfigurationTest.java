@@ -7,7 +7,20 @@ import android.content.SharedPreferences;
 import android.test.AndroidTestCase;
 
 public class WidgetConfigurationTest extends AndroidTestCase {
-    WidgetConfiguration config;
+    private class ScopedWidgetConfiguration extends WidgetConfiguration {
+        public static final String PREF_NAME = "se.hehu.test.DaysLeft";
+
+        public ScopedWidgetConfiguration(Context context, int widgetId) {
+            super(context, widgetId);
+        }
+
+        protected SharedPreferences getPrefs() {
+            return context
+                    .getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        }
+    }
+
+    ScopedWidgetConfiguration config;
     final int widgetId = 1, otherWidgetId = 2;
 
     protected void setUp() throws Exception {
@@ -16,17 +29,19 @@ public class WidgetConfigurationTest extends AndroidTestCase {
         config = openConfig();
     }
 
-    protected WidgetConfiguration openConfig() {
+    protected ScopedWidgetConfiguration openConfig() {
         return openConfig(widgetId);
     }
 
-    protected WidgetConfiguration openConfig(int widgetId) {
-        return new WidgetConfiguration(getContext(), widgetId);
+    protected ScopedWidgetConfiguration openConfig(int widgetId) {
+        return new ScopedWidgetConfiguration(getContext(), widgetId);
     }
 
     private void resetStoredPreferences() {
-        SharedPreferences.Editor editor = getContext().getSharedPreferences(
-                WidgetConfiguration.PREF_NAME, Context.MODE_PRIVATE).edit();
+        SharedPreferences prefs = getContext().getSharedPreferences(
+                ScopedWidgetConfiguration.PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
         editor.clear();
         editor.commit();
     }
