@@ -63,6 +63,9 @@ public class DaysLeftWidgetProvider extends AppWidgetProvider {
         }
 
         private void updateTitle(RemoteViews views, String title) {
+            if (title == null) {
+                title = context.getString(R.string.no_title);
+            }
             views.setTextViewText(R.id.eventTitle, title);
         }
 
