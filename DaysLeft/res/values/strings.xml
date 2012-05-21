@@ -6,5 +6,6 @@
     <string name="configure_title_label">Title</string>
     <string name="configure_date_label">Date</string>
     <string name="configure_save">Save</string>
+    <string name="icon_copyright">Application icon:\nCandy Clock, © 2008 cemagraphics\nused with permission</string>
 
 </resources>

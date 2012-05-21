@@ -38,4 +38,20 @@
         android:layout_height="wrap_content"
         android:text="@string/configure_save" />
 
+    <LinearLayout
+        android:id="@+id/footerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:gravity="bottom|center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/iconCopyrightNotice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:text="@string/icon_copyright" />
+    </LinearLayout>
+
 </LinearLayout>
