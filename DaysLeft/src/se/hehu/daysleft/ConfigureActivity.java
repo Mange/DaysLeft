@@ -1,4 +1,4 @@
-package se.hehu;
+package se.hehu.daysleft;
 
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;

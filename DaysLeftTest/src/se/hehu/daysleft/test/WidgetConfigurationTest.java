@@ -1,14 +1,14 @@
-package se.hehu.test;
+package se.hehu.daysleft.test;
 
-import se.hehu.SimpleDate;
-import se.hehu.WidgetConfiguration;
+import se.hehu.daysleft.SimpleDate;
+import se.hehu.daysleft.WidgetConfiguration;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.test.AndroidTestCase;
 
 public class WidgetConfigurationTest extends AndroidTestCase {
     private class ScopedWidgetConfiguration extends WidgetConfiguration {
-        public static final String PREF_NAME = "se.hehu.test.DaysLeft";
+        public static final String PREF_NAME = "se.hehu.daysleft.test.DaysLeft";
 
         public ScopedWidgetConfiguration(Context context, int widgetId) {
             super(context, widgetId);

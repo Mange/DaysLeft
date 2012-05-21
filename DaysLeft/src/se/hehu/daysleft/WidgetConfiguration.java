@@ -1,4 +1,4 @@
-package se.hehu;
+package se.hehu.daysleft;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,7 +7,7 @@ public class WidgetConfiguration {
     protected Context context;
     protected int widgetId;
 
-    public static final String PREF_NAME = "se.hehu.DaysLeft";
+    public static final String PREF_NAME = "se.hehu.daysleft.DaysLeft";
     private static final String PREF_PREFIX = "widget_";
 
     public WidgetConfiguration(Context context, int widgetId) {

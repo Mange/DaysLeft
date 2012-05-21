@@ -1,4 +1,4 @@
-package se.hehu;
+package se.hehu.daysleft;
 
 import java.util.Calendar;
 

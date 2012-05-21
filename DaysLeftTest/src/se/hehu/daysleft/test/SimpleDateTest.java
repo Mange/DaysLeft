@@ -1,8 +1,8 @@
-package se.hehu.test;
+package se.hehu.daysleft.test;
 
 import java.util.Calendar;
 
-import se.hehu.SimpleDate;
+import se.hehu.daysleft.SimpleDate;
 import android.test.AndroidTestCase;
 
 public class SimpleDateTest extends AndroidTestCase {
