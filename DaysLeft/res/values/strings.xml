@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">DaysLeft</string>
+    <string name="app_name">Days left</string>
     <string name="no_title">No title</string>
     <string name="configure_title_label">Title</string>
     <string name="configure_date_label">Date</string>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Dagar kvar</string>
+    <string name="no_title">Ingen titel</string>
+    <string name="configure_title_label">Titel</string>
+    <string name="configure_date_label">Datum</string>
+    <string name="configure_save">Spara</string>
+
+</resources>
