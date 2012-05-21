@@ -86,7 +86,7 @@ public class ConfigureActivity extends Activity {
         final Context context = this;
         AppWidgetManager appWidgetManager = AppWidgetManager
                 .getInstance(context);
-        DaysLeftWidgetProvider.updateAppWidget(context, appWidgetManager,
+        WidgetProvider.updateAppWidget(context, appWidgetManager,
                 widgetId);
     }
 

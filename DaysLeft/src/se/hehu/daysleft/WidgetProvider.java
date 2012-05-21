@@ -7,7 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
-public class DaysLeftWidgetProvider extends AppWidgetProvider {
+public class WidgetProvider extends AppWidgetProvider {
     public void onUpdate(Context context, AppWidgetManager appWidgetManager,
             int[] appWidgetIds) {
         WidgetRefresher refresher = new WidgetRefresher(context,
