@@ -39,6 +39,9 @@ public class ConfigureActivity extends Activity {
         setContentView(R.layout.config);
         findViewById(R.id.saveButton).setOnClickListener(onClickListener);
 
+        titleEdit = (EditText) findViewById(R.id.configureTitle);
+        datePicker = (DatePicker) findViewById(R.id.configureDate);
+
         loadSettings();
     }
 
@@ -53,12 +56,16 @@ public class ConfigureActivity extends Activity {
 
     private void loadSettings() {
         config = new WidgetConfiguration(getBaseContext(), widgetId);
+
+        String title = config.getTitle();
         SimpleDate date = config.getSimpleDate();
 
-        titleEdit = (EditText) findViewById(R.id.configureTitle);
-        datePicker = (DatePicker) findViewById(R.id.configureDate);
+        if (title != null) {
+            titleEdit.setText(config.getTitle());
+        } else {
+            titleEdit.setText(getString(R.string.no_title));
+        }
 
-        titleEdit.setText(config.getTitle());
         if (date != null) {
             datePicker.updateDate(date.getYear(), date.getMonth() - 1,
                     date.getDay());

@@ -16,7 +16,7 @@ public class WidgetConfiguration {
     }
 
     public String getTitle() {
-        return getPrefs().getString(getFullKeyName("title"), "No title");
+        return getPrefs().getString(getFullKeyName("title"), null);
     }
 
     public SimpleDate getSimpleDate() {

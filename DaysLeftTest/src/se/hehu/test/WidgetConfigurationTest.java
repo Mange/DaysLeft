@@ -31,6 +31,11 @@ public class WidgetConfigurationTest extends AndroidTestCase {
         editor.commit();
     }
 
+    public void testSettingsBeingNilWhenUnset() {
+        assertNull(config.getTitle());
+        assertNull(config.getSimpleDate());
+    }
+
     public void testSavingTitle() {
         String newTitle = "The new title";
         assertFalse(newTitle.equals(config.getTitle()));
