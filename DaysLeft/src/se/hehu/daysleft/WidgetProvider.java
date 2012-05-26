@@ -77,8 +77,8 @@ public class WidgetProvider extends AppWidgetProvider {
             Intent intent = new Intent(context, ConfigureActivity.class);
             intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId);
 
-            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
-                    intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent pendingIntent = PendingIntent.getActivity(context,
+                    widgetId, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
             views.setOnClickPendingIntent(R.id.eventTitle, pendingIntent);
         }
