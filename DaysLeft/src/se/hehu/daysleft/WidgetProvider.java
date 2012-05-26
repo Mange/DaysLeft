@@ -75,7 +75,12 @@ public class WidgetProvider extends AppWidgetProvider {
 
         private void setupClickIntent(RemoteViews views, int widgetId) {
             Intent intent = new Intent(context, ConfigureActivity.class);
+
             intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId);
+
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
             PendingIntent pendingIntent = PendingIntent.getActivity(context,
                     widgetId, intent, PendingIntent.FLAG_UPDATE_CURRENT);
