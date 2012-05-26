@@ -62,8 +62,6 @@ public class ConfigureActivity extends Activity {
 
         if (title != null) {
             titleEdit.setText(config.getTitle());
-        } else {
-            titleEdit.setText(getString(R.string.no_title));
         }
 
         if (date != null) {
