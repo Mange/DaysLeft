@@ -1,8 +1,5 @@
 # Metadata, Eclipse stuff, etc.
 .metadata
-.settings
-.project
-.classpath
 
 # Compiled, generated
 *.class
