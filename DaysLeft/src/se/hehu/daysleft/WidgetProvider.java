@@ -1,26 +1,87 @@
 package se.hehu.daysleft;
 
+import java.util.Date;
+
+import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
 public class WidgetProvider extends AppWidgetProvider {
-    public void onUpdate(Context context, AppWidgetManager appWidgetManager,
-            int[] appWidgetIds) {
-        WidgetRefresher refresher = new WidgetRefresher(context,
-                appWidgetManager);
-        int totalWidgets = appWidgetIds.length;
-        for (int i = 0; i < totalWidgets; i++) {
-            refresher.refresh(appWidgetIds[i]);
+    private PendingIntent alarmIntent;
+    private final long alarmInterval = AlarmManager.INTERVAL_HOUR;
+    public final String REFRESH_ACTION = "DAYSLEFT_WIDGET_REFRESH";
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        super.onReceive(context, intent);
+        if (REFRESH_ACTION.equals(intent.getAction())) {
+            updateAllWidgets(context);
         }
+    }
+
+    @Override
+    public void onUpdate(Context context, AppWidgetManager widgetManager,
+            int[] ids) {
+        updateAllWidgets(context, widgetManager, ids);
+        setupAlarm(context);
+    }
+
+    @Override
+    public void onDisabled(Context context) {
+        teardownAlarm(context);
     }
 
     public static void updateAppWidget(Context context,
             AppWidgetManager appWidgetManager, int widgetId) {
         new WidgetRefresher(context, appWidgetManager).refresh(widgetId);
+    }
+
+    private void updateAllWidgets(Context context) {
+        AppWidgetManager widgetManager = AppWidgetManager.getInstance(context);
+
+        final String className = WidgetProvider.class.getName();
+        ComponentName componentName = new ComponentName(
+                context.getPackageName(), className);
+
+        final int[] widgetIds = widgetManager.getAppWidgetIds(componentName);
+        updateAllWidgets(context, widgetManager, widgetIds);
+    }
+
+    private void updateAllWidgets(Context context,
+            AppWidgetManager widgetManager, final int[] ids) {
+        WidgetRefresher refresher = new WidgetRefresher(context, widgetManager);
+        for (int i = 0; i < ids.length; i++) {
+            refresher.refresh(ids[i]);
+        }
+    }
+
+    private void setupAlarm(Context context) {
+        if (alarmIntent == null) {
+            final Intent intent = new Intent(REFRESH_ACTION);
+
+            alarmIntent = PendingIntent.getBroadcast(context, 0, intent,
+                    PendingIntent.FLAG_CANCEL_CURRENT);
+
+            final AlarmManager alarms = getAlarmManager(context);
+            alarms.setInexactRepeating(AlarmManager.RTC, new Date().getTime(),
+                    alarmInterval, alarmIntent);
+
+        }
+    }
+
+    private void teardownAlarm(Context context) {
+        if (alarmIntent != null) {
+            getAlarmManager(context).cancel(alarmIntent);
+        }
+    }
+
+    private final AlarmManager getAlarmManager(Context context) {
+        return (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
     }
 
     private static class WidgetRefresher {
