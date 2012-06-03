@@ -68,7 +68,7 @@ public class WidgetProvider extends AppWidgetProvider {
                     PendingIntent.FLAG_CANCEL_CURRENT);
 
             final AlarmManager alarms = getAlarmManager(context);
-            alarms.setRepeating(AlarmManager.RTC, new Date().getTime(),
+            alarms.setInexactRepeating(AlarmManager.RTC, new Date().getTime(),
                     alarmInterval, alarmIntent);
 
         }
